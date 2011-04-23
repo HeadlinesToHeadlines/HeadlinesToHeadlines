@@ -32,4 +32,7 @@ gem 'mysql2'
 
 
 gem 'jquery-rails', '>= 0.2.6'
-gem 'showoff-io'
+#gem 'showoff-io'
+
+gem 'omniauth', ">= 0.2.4"
+
