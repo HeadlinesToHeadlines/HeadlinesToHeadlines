@@ -1,4 +1,6 @@
+<%= button_to "Leave game", round_leave_game_path(@round.id) %>
 <% @round.user_rounds.each do |ur| %>
+
   (<%= ur.user.name %>)
 <% end %>
 
