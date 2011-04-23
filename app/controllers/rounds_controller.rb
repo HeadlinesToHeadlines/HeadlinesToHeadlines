@@ -24,12 +24,13 @@ class RoundsController < ApplicationController
   end
 
   def game
+
   end
 
   def index
     if current_user
       ur = UserRound.find_by_user_id(current_user.id)
-      redirect_to round_game_path(Round.find(ur.round_id))
+      redirect_to round_game_path(Round.find(ur.round_id)) if ur
     end
   end
 

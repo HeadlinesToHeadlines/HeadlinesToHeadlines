@@ -1,3 +1,6 @@
+<div id="user_nav">  
+  <%= link_to "Sign Out", signout_path %>  
+</div>  
 <%= button_to "Leave game", round_leave_game_path(@round.id) %>
 <% @round.user_rounds.each do |ur| %>
 
