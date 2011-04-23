@@ -1,0 +1,34 @@
+New York Times
+http://www.nytimes.com/services/xml/rss/nyt/HomePage.xml
+
+Perez Hilton
+http://img.perezhilton.com/?feed=rss2
+http://img.perezhilton.com/images/perezhilton_celebrity-gossip_travolta2.jpg
+
+ESPN
+http://sports-ak.espn.go.com/espn/rss/news
+http://a2.espncdn.com/prod/assets/espn_top_nav_logo_109x27.png
+
+New York Daily News
+http://www.nydailynews.com/news/index_rss.xml
+http://assets.nydailynews.com/img/static/hdr_logo.png
+
+Mashable
+http://feeds.mashable.com/mashable
+http://5.mshcdn.com/wp-content/themes/v7/img/Mashable_shadow_logo.png
+
+Al-Jazeera English
+http://english.aljazeera.net/Services/Rss/?PostingId=2007731105943979989
+http://english.aljazeera.net/Media/ver2/Images/1pximage.png
+
+New Yorker
+http://www.newyorker.com/services/rss/feeds/everything.xml
+
+Forbes
+http://www.forbes.com/news/index.xml
+
+Hipster Runoff
+http://www.hipsterrunoff.com/feed
+
+National Enquirer
+http://www.nationalenquirer.com/rss.xml
