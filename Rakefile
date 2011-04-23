@@ -5,3 +5,11 @@ require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
 HeadlinesToHeadlines::Application.load_tasks
+
+desc "Load headlines"
+task :load_headlines do
+  require 'rss_importer'
+  Headline.feeds.each do |h|
+    RssImporter.import(h)
+  end
+end

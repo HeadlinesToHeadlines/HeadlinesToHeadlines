@@ -1,6 +1,6 @@
 class RoundsController < ApplicationController
 
-  before_filter :get_round_id, :only => [:game, :leave_game]
+  before_filter :get_round_id, :only => [:game, :leave_game, :play]
 
   def new
     @round = Round.new
@@ -41,6 +41,16 @@ class RoundsController < ApplicationController
       ur = UserRound.find_by_user_id(current_user.id)
       redirect_to round_game_path(Round.find(ur.round_id)) if ur
     end
+  end
+
+  def play
+    argument = params[:user_round][:argument]
+    played_headline = params[:user_round][:played_headline]
+
+    ur = UserRound.find_by_user_id(current_user.id)
+    ur.update_attributes(:argument => argument, :played_headline => Headline.find(played_headline.to_i))
+
+    redirect_to :action => :game
   end
 
   private
