@@ -32,4 +32,4 @@ gem 'mysql2'
 
 
 gem 'jquery-rails', '>= 0.2.6'
-
+gem 'showoff-io'
