@@ -1,6 +1,10 @@
 class CreateRounds < ActiveRecord::Migration
   def self.up
     create_table :rounds do |t|
+      t.integer :winner_id
+      t.integer :judge_id
+
+      t.string :topic
 
       t.timestamps
     end

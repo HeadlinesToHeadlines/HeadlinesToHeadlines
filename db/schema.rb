@@ -10,9 +10,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110423192524) do
+ActiveRecord::Schema.define(:version => 20110423195347) do
+
+  create_table "headlines", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "rounds", :force => true do |t|
+    t.integer  "winner_id"
+    t.integer  "judge_id"
+    t.string   "topic"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -20,6 +31,8 @@ ActiveRecord::Schema.define(:version => 20110423192524) do
   create_table "user_rounds", :force => true do |t|
     t.integer  "user_id"
     t.integer  "round_id"
+    t.integer  "headline_id"
+    t.text     "argument"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
