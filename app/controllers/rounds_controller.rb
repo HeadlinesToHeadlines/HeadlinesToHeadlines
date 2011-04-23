@@ -24,7 +24,11 @@ class RoundsController < ApplicationController
   end
 
   def game
-
+    @headlines = Headline.all
+    unless @round.judge_id
+      users = @round.user_rounds.map {|r| r.user_id}
+    end
+    @judge = User.find(@round.judge_id)
   end
 
   def index
