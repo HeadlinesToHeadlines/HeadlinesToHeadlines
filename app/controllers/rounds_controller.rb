@@ -25,10 +25,15 @@ class RoundsController < ApplicationController
 
   def game
     @headlines = Headline.all
-    unless @round.judge_id
-      users = @round.user_rounds.map {|r| r.user_id}
-    end
+    @round.update_attribute(:judge_id, @round.user_rounds.shuffle.first.user_id) unless @round.judge_id
+    @round.update_attribute(:topic, Round.adjectives.shuffle.first) unless @round.topic
     @judge = User.find(@round.judge_id)
+    @user_round = UserRound.find_by_user_id(current_user.id)
+    if @user_round.headlines.blank?
+      6.times do |i|
+        @user_round.headlines << Headline.all.shuffle.first
+      end
+    end
   end
 
   def index

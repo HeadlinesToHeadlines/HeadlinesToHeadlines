@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110423214403) do
+ActiveRecord::Schema.define(:version => 20110423221703) do
 
   create_table "headlines", :force => true do |t|
     t.string   "title"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20110423214403) do
     t.datetime "updated_at"
     t.string   "guid"
     t.datetime "published_at"
+    t.integer  "user_round_id"
   end
 
   create_table "rounds", :force => true do |t|
@@ -33,7 +34,6 @@ ActiveRecord::Schema.define(:version => 20110423214403) do
   create_table "user_rounds", :force => true do |t|
     t.integer  "user_id"
     t.integer  "round_id"
-    t.integer  "headline_id"
     t.text     "argument"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -2,10 +2,18 @@
   <%= link_to "Sign Out", signout_path %>  
 </div>  
 <%= button_to "Leave game", round_leave_game_path(@round.id) %>
-<% @round.user_rounds.each do |ur| %>
+<div>
+  Playaz: 
+  <%= @round.user_rounds.map{|r| r.user.name }.join ", " %>
+</div>
 
-  (<%= ur.user.name %>)
-<% end %>
+<div>
+  Judge: <%= @judge.name %>
+</div>
+
+<div>
+  Topic: <%= @round.topic %>
+</div>
 
 <div>
   <% @headlines.each do |h| %>

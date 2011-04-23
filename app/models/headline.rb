@@ -1,6 +1,6 @@
 class Headline < ActiveRecord::Base
 
-  has_many :user_rounds
+  belongs_to :user_round
 
   def self.feeds
     [
