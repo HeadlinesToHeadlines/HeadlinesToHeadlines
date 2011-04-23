@@ -23,12 +23,12 @@ http://english.aljazeera.net/Media/ver2/Images/1pximage.png
 
 New Yorker
 http://www.newyorker.com/services/rss/feeds/everything.xml
+http://www.newyorker.com/images/elements/print/newyorker_printlogo.gif
 
 Forbes
 http://www.forbes.com/news/index.xml
-
-Hipster Runoff
-http://www.hipsterrunoff.com/feed
+http://images.forbes.com/media/assets/header_baked/forbes_logo_main.gif
 
 National Enquirer
 http://www.nationalenquirer.com/rss.xml
+http://www.nationalenquirer.com/sites/nationalenquirer.com/themes/nationalenquirer/logo.png
