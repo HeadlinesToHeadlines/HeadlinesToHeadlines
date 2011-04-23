@@ -8,6 +8,19 @@
 <body>
 <div id="title_bar">
 
+<div id="user_nav">  
+  <% if current_user %>  
+    Welcome, <%= current_user.name %>!  
+    <%= link_to "Sign Out", signout_path %>  
+  <% else %>  
+    <%= link_to "Sign in with Twitter", "/auth/twitter" %>  
+  <% end %>  
+</div>  
+
+<div>
+  <%= link_to "Start game", new_round_path %>
+</div>
+
 <div id="logo">Title</div> 
 <ul class="nav_list">
 	<li>Help</li>
@@ -101,6 +114,3 @@
 
 </body>
 </html>
-
-	
-

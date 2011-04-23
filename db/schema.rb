@@ -10,7 +10,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110423185513) do
+ActiveRecord::Schema.define(:version => 20110423192524) do
+
+  create_table "rounds", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_rounds", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "round_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "provider"
