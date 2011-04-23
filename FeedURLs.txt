@@ -8,7 +8,7 @@ ESPN
 http://sports-ak.espn.go.com/espn/rss/news
 
 New York Daily News
-http://www.nydailynews.com/index_rss.xml
+http://www.nydailynews.com/news/index_rss.xml
 
 Mashable
 http://feeds.mashable.com/mashable
