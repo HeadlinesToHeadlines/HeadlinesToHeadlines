@@ -1,0 +1,29 @@
+New York Times
+http://www.nytimes.com/services/xml/rss/nyt/HomePage.xml
+
+Perez Hilton
+http://img.perezhilton.com/?feed=rss2
+
+ESPN
+http://sports-ak.espn.go.com/espn/rss/news
+
+New York Daily News
+http://www.nydailynews.com/index_rss.xml
+
+Mashable
+http://feeds.mashable.com/mashable
+
+Al-Jazeera English
+http://english.aljazeera.net/Services/Rss/?PostingId=2007731105943979989
+
+New Yorker
+http://www.newyorker.com/services/rss/feeds/everything.xml
+
+Forbes
+http://www.forbes.com/news/index.xml
+
+Hipster Runoff
+http://www.hipsterrunoff.com/feed
+
+National Enquirer
+http://www.nationalenquirer.com/rss.xml
