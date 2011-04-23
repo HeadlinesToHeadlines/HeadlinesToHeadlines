@@ -5,7 +5,7 @@ gem 'rails', '3.0.6'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2'
+gem 'sqlite3'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -32,7 +32,10 @@ gem 'mysql2'
 
 
 gem 'jquery-rails', '>= 0.2.6'
-#gem 'showoff-io'
+gem 'showoff-io'
 
 gem 'omniauth', ">= 0.2.4"
 
+group :development do
+#gem "rails-erd"
+end

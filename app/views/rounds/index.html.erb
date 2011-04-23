@@ -15,7 +15,27 @@
 	<div style="clear: both;"></div>
 </div><!--sfdsf-->
 
+<div id="user_nav">  
+  <% if current_user %>  
+    Welcome, <%= current_user.name %>!  
+    <%= link_to "Sign Out", signout_path %>  
+  <% else %>  
+    <%= link_to "Sign in with Twitter", "/auth/twitter" %>  
+  <% end %>  
+</div>  
 
+<% if current_user %>  
+  <div>
+    <%= link_to "Start game", new_round_path %>
+  </div>
+<% end %>
+
+<div id="logo">Title</div> 
+<ul class="nav_list">
+	<li>Help</li>
+	<li>Stats</li>
+	<li>Log Out</li>
+</ul>
 
 <div id="wrap">	
 	<div id="players" class="narrowcolumn">	
@@ -92,6 +112,3 @@
 
 </body>
 </html>
-
-	
-
