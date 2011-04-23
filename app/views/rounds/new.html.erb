@@ -1,7 +1,7 @@
 <div id="users">
   <% form_for @round do |f| %>
     <% User.all.each do |u| %>
-      <%= check_box 'round[user]', u.uid %>
+      <%= check_box 'user', u.id %>
       <%= f.label u.name %>
     <% end %>
     <%= f.submit %>

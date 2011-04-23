@@ -32,10 +32,10 @@ gem 'sqlite3'
 
 
 gem 'jquery-rails', '>= 0.2.6'
-#gem 'showoff-io'
+gem 'showoff-io'
 
 gem 'omniauth', ">= 0.2.4"
 
 group :development do
-  gem "rails-erd"
+#gem "rails-erd"
 end

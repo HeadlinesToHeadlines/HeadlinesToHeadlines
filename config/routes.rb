@@ -1,5 +1,6 @@
 HeadlinesToHeadlines::Application.routes.draw do
   resources :rounds do
+    get :game
   end
 
   root :to => "rounds#index"
