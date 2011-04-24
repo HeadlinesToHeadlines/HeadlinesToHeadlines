@@ -30,13 +30,10 @@ gem 'sqlite3'
 #   gem 'webrat'
 # end
 
-
 gem 'jquery-rails', '>= 0.2.6'
-gem 'showoff-io'
-
 gem 'omniauth', ">= 0.2.4"
-gem 'htmlentities'
 
 group :development do
-#gem "rails-erd"
+  gem "rails-erd"
+  gem 'showoff-io'
 end
