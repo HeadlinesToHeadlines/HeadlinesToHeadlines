@@ -7,7 +7,7 @@ require 'rake'
 HeadlinesToHeadlines::Application.load_tasks
 
 desc "Load headlines"
-task :load_headlines do
+task :load_headlines => :environment do
   require 'rss_importer'
   Headline.feeds.each do |h|
     RssImporter.import(h)

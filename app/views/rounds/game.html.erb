@@ -16,7 +16,7 @@
   Topic: <%= @round.topic %>
 </div>
 
-<% unless @user_round.played_headline %>
+<% if @user_round.argument.blank? %>
   <div>
     <%= form_tag :action => :play do %>
       <% @user_round.headlines.each do |h| %>
@@ -25,7 +25,7 @@
           <%= h.title.html_safe %>
         </div>
       <% end %>
-      <br/>
+      </br/>
       <%= label_tag :argument %><br/>
       <%= text_area 'user_round', 'argument', :cols => 100, :rows => 5 %><br/>
       <%= submit_tag %>
@@ -36,7 +36,7 @@
 
   <div>
     <% @round.user_rounds.each do |ur| %>
-      <% unless ur.played_headline == nil %>
+      <% unless ur.argument.blank? %>
         <div>
           <h1><%= ur.played_headline.title.html_safe %></h1>
           <p><%= ur.argument %></p>
