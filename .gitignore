@@ -2,4 +2,5 @@
 db/*.sqlite3
 log/*.log
 tmp/
-config/initializers/omniauth.rb
+config/initializers/omniauth.rb_secret
+
