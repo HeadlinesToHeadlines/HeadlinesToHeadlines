@@ -31,7 +31,7 @@ gem 'sqlite3'
 # end
 
 gem 'jquery-rails', '>= 0.2.6'
-gem 'omniauth', ">= 0.2.4"
+gem 'omniauth'
 
 group :development do
   gem "rails-erd"

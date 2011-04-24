@@ -142,7 +142,7 @@ PLATFORMS
 
 DEPENDENCIES
   jquery-rails (>= 0.2.6)
-  omniauth (>= 0.2.4)
+  omniauth
   rails (= 3.0.6)
   rails-erd
   showoff-io
