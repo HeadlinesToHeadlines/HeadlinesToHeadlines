@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110424174630) do
+ActiveRecord::Schema.define(:version => 20110426170431) do
 
   create_table "discussions", :force => true do |t|
     t.integer  "user_round_id"
@@ -21,14 +21,14 @@ ActiveRecord::Schema.define(:version => 20110424174630) do
   end
 
   create_table "headlines", :force => true do |t|
-    t.string   "title"
     t.text     "body"
-    t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "guid"
     t.datetime "published_at"
     t.integer  "user_round_id"
+    t.text     "title"
+    t.text     "guid"
+    t.text     "url"
   end
 
   create_table "rounds", :force => true do |t|
