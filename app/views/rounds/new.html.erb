@@ -1,8 +1,11 @@
+<h1>Choose your play mates</h1>
 <div id="users">
   <% form_for @round do |f| %>
     <% User.all.each do |u| %>
-      <%= check_box 'user', u.id %>
-      <%= f.label u.name %>
+      <div>
+        <%= check_box 'user', u.id %>
+        <%= u.name %>
+      </div>
     <% end %>
     <%= f.submit %>
   <% end %>

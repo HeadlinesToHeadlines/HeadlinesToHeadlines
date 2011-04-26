@@ -1,11 +1,19 @@
+<%= current_user.name %>
 <div id="user_nav">  
   <%= link_to "Sign Out", signout_path %>  
 </div>  
-<%= button_to "Leave game", round_leave_game_path(@round.id) %>
+<%= link_to "Leave game", round_leave_game_path(@round.id), :method => :post %>
 <%= link_to "Reload", round_game_path(@round) %>
+
+<% if current_user == @judge %>
+  <%= link_to 'Finish round', round_finish_path(@round), :method => :post %>
+<% end %>
+
 <div>
   Playaz: 
-  <%= @round.user_rounds.map{|r| r.user.name }.join ", " %>
+  <% players = @round.user_rounds.map{|r| r.user } %>
+  <% players.delete(@judge) %>
+  <%= players.map(&:name).to_sentence %>
 </div>
 
 <div>
@@ -16,33 +24,13 @@
   Topic: <%= @round.topic %>
 </div>
 
-<% if @user_round.argument.blank? %>
-  <div>
-    <%= form_tag :action => :play do %>
-      <% @user_round.headlines.each do |h| %>
-        <div>
-          <%= radio_button 'user_round', 'played_headline', h.id, :disabled => @user_round.played_headline.blank? %>
-          <%= h.title.html_safe %>
-        </div>
-      <% end %>
-      </br/>
-      <%= label_tag :argument %><br/>
-      <%= text_area 'user_round', 'argument', :cols => 100, :rows => 5 %><br/>
-      <%= submit_tag %>
-    <% end %>
-  </div>
-
+<% if current_user == @judge %>
+  <h1>Judging</h1>
+  <%= render "discuss", :r => @round %>
 <% else %>
-
-  <div>
-    <% @round.user_rounds.each do |ur| %>
-      <% unless ur.argument.blank? %>
-        <div>
-          <h1><%= ur.played_headline.title.html_safe %></h1>
-          <p><%= ur.argument %></p>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-
+  <% if @user_round.argument.blank? %>
+    <%= render "make_play", :ur => @user_round %>
+  <% else %>
+    <%= render "discuss", :r => @round %>
+  <% end %>
 <% end %>

@@ -10,7 +10,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110423223919) do
+ActiveRecord::Schema.define(:version => 20110424174630) do
+
+  create_table "discussions", :force => true do |t|
+    t.integer  "user_round_id"
+    t.text     "argument"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "headlines", :force => true do |t|
     t.string   "title"
@@ -29,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20110423223919) do
     t.string   "topic"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "finished"
   end
 
   create_table "user_rounds", :force => true do |t|

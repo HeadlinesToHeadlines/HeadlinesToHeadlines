@@ -1,6 +1,6 @@
 class RoundsController < ApplicationController
 
-  before_filter :get_round_id, :only => [:game, :leave_game, :play]
+  before_filter :get_round_id, :only => [:game, :leave_game, :play, :finish]
 
   def new
     @round = Round.new
@@ -38,8 +38,11 @@ class RoundsController < ApplicationController
 
   def index
     if current_user
-      ur = UserRound.find_by_user_id(current_user.id)
-      redirect_to round_game_path(Round.find(ur.round_id)) if ur
+      urs = UserRound.select('*').joins(:round).where(:user_id => current_user.id, 'rounds.finished' => nil)
+      if urs and !urs.blank?
+        round = urs.last.round
+        redirect_to round_game_path(round) if round and (round.finished == nil)
+      end
     end
   end
 
@@ -51,6 +54,17 @@ class RoundsController < ApplicationController
     ur.update_attributes(:argument => argument, :played_headline => Headline.find(played_headline.to_i))
 
     redirect_to :action => :game
+  end
+
+  def winner
+    ur = UserRound.find(params[:round_id])
+    ur.round.update_attribute(:winner_id, ur.id)
+    redirect_to :action => :game
+  end
+
+  def finish
+    @round.update_attribute(:finished, true)
+    redirect_to root_url
   end
 
   private
