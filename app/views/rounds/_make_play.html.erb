@@ -2,10 +2,11 @@
   <h1>Please, play your headline, making a compelling argument.</h1>
   <div>
     <%= form_tag :action => :play do %>
+      <input type="hidden" name="user_round[user_round]" value="<%= ur.id %>" />
       <% ur.headlines.each do |h| %>
         <div>
-          <%= radio_button 'user_round', 'played_headline', h.id, :disabled => ur.played_headline.blank? %>
-          <%= h.title.html_safe %> <span class="link" rel="#headline_<%= h.id %>">Read more</a>
+          <%= radio_button 'user_round', 'played_headline', h.id %>
+          <%= h.title.html_safe %> <span class="link" rel="#headline_<%= h.id %>">Read more</span>
         </div>
         <div class="simple_overlay article" id="headline_<%= h.id %>">
           <%= h.body.html_safe %>

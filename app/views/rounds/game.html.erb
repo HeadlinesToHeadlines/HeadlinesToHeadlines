@@ -1,25 +1,26 @@
-<%= link_to "Leave game", round_leave_game_path(@round.id), :method => :post %>
-<%= link_to "Reload", round_game_path(@round) %>
+<% unless current_user == @judge %>
+  <%= link_to "Leave game", round_leave_game_path(@user_round), :method => :post %>
+<% end %>
 
 <% if current_user == @judge %>
   <%= link_to 'Finish round', round_finish_path(@round), :method => :post %>
 <% end %>
 
-<% players = @round.user_rounds.map{|r| r.user } %>
-<% players.delete(@judge) %>
-
 <div id="players" class="narrowcolumn">	
 
   <div class="player">
-    <img src="<%= @judge.image_url %>" width="45" height="45" alt=""/ align="left"/>
-    <p><b>Judge: </b><%= @judge.name %></p>
+    <img src="<%= @judge.image_url %>" alt=""/ align="left"/>
+    <b>Judge:</b> <%= @judge.name %><br/>
+    <%= @judge.score %> Points
   </div>		
 
-  <% players.each do |player| %>
+  <% @round.user_rounds.each do |user_round| %>
+    <% next if user_round.user == @judge %>
     <div class="player">
-      <img src="<%= player.image_url %>" width="45" height="45" alt=""/ align="left"/>
-      <%= player.name %><br/>
-      0 Points
+      <img src="<%= user_round.user.image_url %>" alt=""/ align="left"/>
+      <%= user_round.user.name %><br/>
+      <%= user_round.user.score %> Points
+      <%= "<span class='left'>LEFT</span>".html_safe if user_round.left_game %>
     </div>		
   <% end %>
 
@@ -31,7 +32,7 @@
     <h1>Judging</h1>
     <%= render "discuss", :r => @round %>
   <% else %>
-    <% if @user_round.argument.nil? %>
+    <% if @user_round.played_headline.nil? and @user_round.argument.blank? %>
       <%= render "make_play", :ur => @user_round %>
     <% else %>
       <%= render "discuss", :r => @round %>

@@ -3,9 +3,9 @@
     <div class="message">No plays yet.</div>
   <% else %>
     <% r.user_rounds.each do |ur| %>
-      <% unless ur.argument.blank? %>
+      <% unless ur.argument.nil? and ur.played_headline.nil? %>
         <div>
-          <h1><%= ur.played_headline.title.html_safe %></h1>
+          <h1><%= ur.played_headline.html_safe %></h1>
           <%= button_to "Select as winner", round_winner_path(ur) if current_user == @judge and !@round.winner_id %>
           <%= "Winner!" if @round.winner_id == ur.id %>
           <table class="discussion">

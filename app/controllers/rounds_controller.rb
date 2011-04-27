@@ -1,12 +1,9 @@
 class RoundsController < ApplicationController
 
-  before_filter :get_round_id, :only => [:game, :leave_game, :play, :finish]
+  before_filter :get_round_id, :only => [:game, :play, :finish]
 
   def new
     @round = Round.new
-  end
-
-  def leave_game
   end
 
   def create
@@ -33,6 +30,8 @@ class RoundsController < ApplicationController
       6.times do |i|
         @user_round.headlines << Headline.all.shuffle.first
       end
+      @user_round.save
+
     end
   end
 
@@ -45,9 +44,15 @@ class RoundsController < ApplicationController
   def play
     argument = params[:user_round][:argument]
     played_headline = params[:user_round][:played_headline]
+    user_round = params[:user_round][:user_round]
 
-    ur = @round.user_rounds.where(:user_id => current_user).first
-    ur.update_attributes(:argument => argument, :played_headline => Headline.find(played_headline.to_i))
+    title = Headline.find(played_headline.to_i).title
+
+    p "Argument: #{argument}"
+    p "Title: #{title}"
+
+    ur = UserRound.find(user_round.to_i)
+    ur.update_attributes(:argument => argument, :played_headline => title)
 
     redirect_to :action => :game
   end
@@ -55,11 +60,19 @@ class RoundsController < ApplicationController
   def winner
     ur = UserRound.find(params[:round_id])
     ur.round.update_attribute(:winner_id, ur.id)
+    ur.user.score += 1
+    ur.user.save
     redirect_to "/rounds/#{ur.round.id}/game"
   end
 
   def finish
     @round.update_attribute(:finished, true)
+    redirect_to root_url
+  end
+
+  def leave_game
+    ur = UserRound.find(params[:round_id])
+    ur.update_attribute(:left_game, true)
     redirect_to root_url
   end
 

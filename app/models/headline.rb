@@ -43,10 +43,6 @@ class Headline < ActiveRecord::Base
       {
       :name => 'National Enquirer',
       :url => 'http://www.nationalenquirer.com/rss.xml'
-    },
-      {
-      :name => 'Hacker News',
-      :url => 'http://news.ycombinator.com/rss'
     }
     ]
   end

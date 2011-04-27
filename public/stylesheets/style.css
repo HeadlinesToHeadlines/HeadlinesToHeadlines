@@ -123,4 +123,16 @@ table.discussion th { text-align: right; }
   font-size: small;
   color: blue;
   cursor: pointer;
+  float: right;
+  text-decoration: none;
+}
+
+span.left {
+  float: right;
+  margin-right: 20px;
+}
+
+.player img {
+  width: 45px;
+  height: 45px;
 }

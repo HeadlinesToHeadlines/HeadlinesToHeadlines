@@ -9,12 +9,12 @@
   <div id="title_bar">
     <ul>
       <li id="title"><a href="/">Headlines to Headlines</a></li> 
-      <li>Help</li>
-      <li>Stats</li>
+      <li><a href="/static/help" class="link">Help</a></li>
+      <li><a href="/static/stats" class="link">Stats</a></li>
       <li>
         <% if current_user %>  
           (<%= current_user.name %>)
-          <%= link_to "Sign Out", signout_path %>  
+          <%= link_to "Sign Out", signout_path, :class => :link %>  
         <% else %>  
           <span class="link" rel="#login_modal">Log In</span>
         <% end %>
