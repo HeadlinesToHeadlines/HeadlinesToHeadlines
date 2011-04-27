@@ -1,7 +1,7 @@
 <h1>Choose your play mates</h1>
 <div id="users">
   <% form_for @round do |f| %>
-    <% User.all.each do |u| %>
+    <% User.where(:logged_in => true).each do |u| %>
       <div>
         <%= check_box 'user', u.id %>
         <%= u.name %>

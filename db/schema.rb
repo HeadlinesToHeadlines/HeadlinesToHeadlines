@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110427032559) do
+ActiveRecord::Schema.define(:version => 20110427181754) do
 
   create_table "discussions", :force => true do |t|
     t.integer  "user_round_id"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20110427032559) do
     t.datetime "updated_at"
     t.text     "image"
     t.integer  "score",      :default => 0
+    t.boolean  "logged_in",  :default => false
   end
 
 end
