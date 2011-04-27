@@ -28,7 +28,7 @@ class RoundsController < ApplicationController
     @round.update_attribute(:judge_id, @round.user_rounds.shuffle.first.user_id) unless @round.judge_id
     @round.update_attribute(:topic, Round.adjectives.shuffle.first) unless @round.topic
     @judge = User.find(@round.judge_id)
-    @user_round = UserRound.find_by_user_id(current_user.id)
+    @user_round = @round.user_rounds.where(:user_id => current_user).first
     if @user_round.headlines.blank?
       6.times do |i|
         @user_round.headlines << Headline.all.shuffle.first
@@ -38,11 +38,7 @@ class RoundsController < ApplicationController
 
   def index
     if current_user
-      urs = UserRound.select('*').joins(:round).where(:user_id => current_user.id, 'rounds.finished' => nil)
-      if urs and !urs.blank?
-        round = urs.last.round
-        redirect_to round_game_path(round) if round and (round.finished == nil)
-      end
+      go_to_current_round
     end
   end
 
@@ -50,7 +46,7 @@ class RoundsController < ApplicationController
     argument = params[:user_round][:argument]
     played_headline = params[:user_round][:played_headline]
 
-    ur = UserRound.find_by_user_id(current_user.id)
+    ur = @round.user_rounds.where(:user_id => current_user).first
     ur.update_attributes(:argument => argument, :played_headline => Headline.find(played_headline.to_i))
 
     redirect_to :action => :game
@@ -59,7 +55,7 @@ class RoundsController < ApplicationController
   def winner
     ur = UserRound.find(params[:round_id])
     ur.round.update_attribute(:winner_id, ur.id)
-    redirect_to :action => :game
+    redirect_to "/rounds/#{ur.round.id}/game"
   end
 
   def finish

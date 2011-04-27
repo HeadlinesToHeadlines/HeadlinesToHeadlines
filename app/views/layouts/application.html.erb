@@ -1,14 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>HeadlinesToHeadlines</title>
+  <title>Headlines to Headlines</title>
   <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
 <body>
+  <div id="title_bar">
+    <ul>
+      <li id="title"><a href="/">Headlines to Headlines</a></li> 
+      <li>Help</li>
+      <li>Stats</li>
+      <li>
+        <% if current_user %>  
+          (<%= current_user.name %>)
+          <%= link_to "Sign Out", signout_path %>  
+        <% else %>  
+          <span class="link" rel="#login_modal">Log In</span>
+        <% end %>
+      </li>
+    </ul>
+    <div style="clear: both;"></div>
+  </div><!--sfdsf-->
 
 <%= yield %>
 
+  <%= javascript_include_tag :defaults %>
+  <script src="http://cdn.jquerytools.org/1.2.5/tiny/jquery.tools.min.js"></script>
+  <script type="text/javascript">
+<%= yield :javascripts %>
+  </script>
+
+  <div class="simple_overlay" id="login_modal">
+    <ul>
+      <li><%= link_to "Sign in with Twitter", "/auth/twitter" %></li>
+      <li><%= link_to "Sign in with Facebook", "/auth/facebook" %></li>
+      <li><%= link_to "Sign in with Google", "/auth/google" %></li>
+      <li><%= link_to "Sign in with Yahoo", "/auth/yahoo" %></li>
+    </ul>
+  </div>
 </body>
 </html>

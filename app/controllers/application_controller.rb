@@ -6,4 +6,12 @@ class ApplicationController < ActionController::Base
   def current_user  
     @current_user ||= User.find(session[:user_id]) if session[:user_id]  
   end  
+
+  def go_to_current_round
+    urs = UserRound.select('*').joins(:round).where(:user_id => current_user.id, 'rounds.finished' => nil)
+    if urs and !urs.blank?
+      round = urs.last.round
+      redirect_to round_game_path(round) if round and (round.finished == nil)
+    end
+  end
 end

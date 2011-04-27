@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110426170431) do
+ActiveRecord::Schema.define(:version => 20110427014113) do
 
   create_table "discussions", :force => true do |t|
     t.integer  "user_round_id"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20110426170431) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "image"
   end
 
 end

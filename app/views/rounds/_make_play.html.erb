@@ -1,17 +1,21 @@
-<h1>Please, play your headline, making a compelling argument.</h1>
-<div>
-  <%= form_tag :action => :play do %>
-    <% ur.headlines.each do |h| %>
-      <div>
-        <%= radio_button 'user_round', 'played_headline', h.id, :disabled => ur.played_headline.blank? %>
-        <%= h.title.html_safe %>
-      </div>
+<div id="headlines">
+  <h1>Please, play your headline, making a compelling argument.</h1>
+  <div>
+    <%= form_tag :action => :play do %>
+      <% ur.headlines.each do |h| %>
+        <div>
+          <%= radio_button 'user_round', 'played_headline', h.id, :disabled => ur.played_headline.blank? %>
+          <%= h.title.html_safe %> <span class="link" rel="#headline_<%= h.id %>">Read more</a>
+        </div>
+        <div class="simple_overlay article" id="headline_<%= h.id %>">
+          <%= h.body.html_safe %>
+          <p><a rel="nofollow" target="_blank" href="<%= h.url.html_safe %>">Article</a></p>
+        </div>
+      <% end %>
+      </br/>
+      <%= label_tag :argument %><br/>
+      <%= text_area 'user_round', 'argument', :cols => 100, :rows => 5 %><br/>
+      <%= submit_tag %>
     <% end %>
-    </br/>
-    <%= label_tag :argument %><br/>
-    <%= text_area 'user_round', 'argument', :cols => 100, :rows => 5 %><br/>
-    <%= submit_tag %>
-  <% end %>
+  </div>
 </div>
-
-
